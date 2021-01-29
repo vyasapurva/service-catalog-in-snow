@@ -1,20 +1,20 @@
-// function onLoad() {
-//     var itm = g_form.getValue('cat_item'); //catalog item
-//     var itm_no = g_form.getValue('number');
-//     var group = '';
-//     var role_admin = g_user.hasRole('admin');
-//     var role_po = g_user.hasRole('admin');
+function onLoad() {
+    var itm = g_form.getValue('cat_item'); //catalog item
+    var itm_no = g_form.getValue('number');
+    var group = '';
+    var role_admin = g_user.hasRole('admin');
+    var role_po = g_user.hasRole('admin');
 
      var grApproval = new GlideRecord("sysapproval_group");
      grApproval.addQuery('parent.number', itm_no);
-//     grApproval.query();
-//     if (grApproval.next()) {
-//         var agrp = grApproval.approval;
-//         group = grApproval.assignment_group;
-//     }
+    grApproval.query();
+    if (grApproval.next()) {
+        var agrp = grApproval.approval;
+        group = grApproval.assignment_group;
+    }
 
-//     var ga = new GlideAjax('FIS_CheckUserInGroup');
-//     ga.addParam('sysparm_name', 'useringroup');
+    var ga = new GlideAjax('FIS_CheckUserInGroup');
+    ga.addParam('sysparm_name', 'useringroup');
      ga.addParam('sysparm_group', group);
      ga.getXML(checkuser);
 
